@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:lung_ai/presentation/auth/login.dart';
 import 'package:lung_ai/presentation/home/home.dart';
+import 'package:lung_ai/presentation/intro/intro_pages.dart';
 import 'package:lung_ai/presentation/splash_screen/splash_screen.dart';
 import 'package:lung_ai/providers/auth.dart';
 import 'package:provider/provider.dart';
@@ -11,7 +13,7 @@ void main() {
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
   ]).then((_) {
-    runApp(MyApp());
+    runApp(const MyApp());
   });
 }
 
@@ -24,10 +26,13 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [ChangeNotifierProvider(create: (ctx) => Auth())],
       child: MaterialApp(
+        theme: ThemeData(fontFamily: "Poppins"),
         debugShowCheckedModeBanner: false,
         routes: {
           '/': (context) => const SplashScreen(),
-          '/home': (context) => const Home()
+          Home.route: (context) => const Home(),
+          IntroPagesOne.route: (context) => const IntroPagesOne(),
+          Login.route: (context) => const Login()
         },
       ),
     );
