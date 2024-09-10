@@ -1,6 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:lung_ai/presentation/auth/register.dart';
 import 'package:lung_ai/providers/auth.dart';
 import 'package:lung_ai/shared/theme_colors.dart';
 import 'package:provider/provider.dart';
@@ -14,7 +15,7 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
-  final _formKey = GlobalKey<FormState>();
+  final _loginFormKey = GlobalKey<FormState>();
   bool isPassHidden = true;
   Map<String, String> signinInfo = {'email': '', 'password': ''};
 
@@ -108,7 +109,7 @@ class _LoginState extends State<Login> {
                 Container(
                   margin: EdgeInsets.only(top: height * 0.05),
                   child: Form(
-                    key: _formKey,
+                    key: _loginFormKey,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
@@ -177,7 +178,7 @@ class _LoginState extends State<Login> {
                               ),
 
                               // password Visibility
-                              obscureText: passwordProvider.isPassHidden,
+                              obscureText: passwordProvider.isLoginPassHidden,
                               decoration: InputDecoration(
                                 // Password Field Eye Icon
                                 suffixIcon: Padding(
@@ -185,9 +186,9 @@ class _LoginState extends State<Login> {
                                   child: IconButton(
                                     onPressed: () {
                                       passwordProvider
-                                          .togglePasswordVisibility();
+                                          .toggleLoginPasswordVisibility();
                                     },
-                                    icon: passwordProvider.isPassHidden
+                                    icon: passwordProvider.isLoginPassHidden
                                         ? SvgPicture.asset(
                                             'assets/icons/unhide_pass_eye.svg',
                                             height: 18,
@@ -260,7 +261,7 @@ class _LoginState extends State<Login> {
                   ),
                 ),
 
-                //Continue with apple btn
+                // Continue with Apple btn
                 GestureDetector(
                   onTap: null,
                   child: Container(
@@ -285,10 +286,11 @@ class _LoginState extends State<Login> {
                       ],
                     ),
                   ),
-                ),
+                ), // End Continue with Apple btn
+
                 const Padding(padding: EdgeInsets.symmetric(vertical: 7)),
 
-                //Continue with google btn
+                // Continue with Google btn
                 GestureDetector(
                   onTap: null,
                   child: Container(
@@ -313,22 +315,30 @@ class _LoginState extends State<Login> {
                       ],
                     ),
                   ),
-                ),
+                ), //End Coninue with Google btn
 
                 //Sign in Button
                 Padding(
-                  padding: EdgeInsets.symmetric(vertical: height * 0.04),
+                  padding: EdgeInsets.symmetric(vertical: height * 0.035),
                   child: GestureDetector(
                     onTap: null,
                     child: Container(
-                      padding: const EdgeInsets.all(18),
+                      padding: const EdgeInsets.all(16),
                       decoration: BoxDecoration(
-                          color: secondaryColor,
-                          border: Border.all(
-                            color: primaryColor,
-                            width: 1.5,
-                          ),
-                          borderRadius: BorderRadius.circular(50)),
+                        color: whiteBG,
+                        border: Border.all(
+                          color: primaryColor,
+                          width: 1.5,
+                        ),
+                        borderRadius: BorderRadius.circular(50),
+                        boxShadow: const [
+                          BoxShadow(
+                            color: Colors.black12,
+                            offset: Offset(0, 0),
+                            blurRadius: 25,
+                          )
+                        ],
+                      ),
                       child: SvgPicture.asset(
                         'assets/icons/arrow-auth_btn.svg',
                         height: 30,
@@ -349,7 +359,10 @@ class _LoginState extends State<Login> {
                             fontSize: 15, fontWeight: FontWeight.w500),
                       ),
                       GestureDetector(
-                        onTap: null,
+                        onTap: () {
+                          Navigator.of(context)
+                              .pushReplacementNamed(Register.route);
+                        },
                         child: const AutoSizeText(
                           'Register',
                           style: TextStyle(
@@ -360,7 +373,7 @@ class _LoginState extends State<Login> {
                       )
                     ],
                   ),
-                )
+                ) // End Registeration Redirect
               ],
             ),
           ),

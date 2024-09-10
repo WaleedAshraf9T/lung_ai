@@ -1,11 +1,19 @@
 import 'package:flutter/material.dart';
 
 class Auth with ChangeNotifier {
-  bool _isPassHidden = true;
-  bool get isPassHidden => _isPassHidden;
+  bool _isLoginPassHidden = true;
+  bool get isLoginPassHidden => _isLoginPassHidden;
 
-  void togglePasswordVisibility() {
-    _isPassHidden = !_isPassHidden;
+  void toggleLoginPasswordVisibility() {
+    _isLoginPassHidden = !_isLoginPassHidden;
+    notifyListeners();
+  }
+
+  bool _isRegisterPassHidden = true;
+  bool get isRegisterPassHidden => _isRegisterPassHidden;
+
+  void toggleRegisterPasswordVisibility() {
+    _isRegisterPassHidden = !_isRegisterPassHidden;
     notifyListeners();
   }
 }

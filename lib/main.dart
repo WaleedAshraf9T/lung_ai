@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:lung_ai/presentation/auth/login.dart';
+import 'package:lung_ai/presentation/auth/register.dart';
 import 'package:lung_ai/presentation/home/home.dart';
 import 'package:lung_ai/presentation/intro/intro_pages.dart';
 import 'package:lung_ai/presentation/splash_screen/splash_screen.dart';
@@ -32,7 +33,8 @@ class MyApp extends StatelessWidget {
           '/': (context) => const SplashScreen(),
           Home.route: (context) => const Home(),
           IntroPagesOne.route: (context) => const IntroPagesOne(),
-          Login.route: (context) => const Login()
+          Login.route: (context) => const Login(),
+          Register.route: (context) => const Register()
         },
       ),
     );
