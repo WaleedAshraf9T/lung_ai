@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:lung_ai/presentation/auth/register.dart';
 import 'package:lung_ai/providers/auth.dart';
+import 'package:lung_ai/shared/field_decoration_properties.dart';
 import 'package:lung_ai/shared/theme_colors.dart';
 import 'package:provider/provider.dart';
 
@@ -131,31 +132,12 @@ class _LoginState extends State<Login> {
                           decoration: InputDecoration(
                             hintText: 'Email',
                             contentPadding: EdgeInsets.symmetric(
-                                horizontal: 16.0, vertical: height * 0.027),
+                                horizontal: 16.0, vertical: height * 0.026),
+
                             // Borders
-                            enabledBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(15),
-                              borderSide: const BorderSide(
-                                color: fieldsBorder,
-                                width: 1.7,
-                                strokeAlign: BorderSide.strokeAlignInside,
-                              ),
-                            ),
-                            focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(12.0),
-                              borderSide: const BorderSide(
-                                color: Colors.black38,
-                                width: 1.7,
-                                strokeAlign: BorderSide.strokeAlignInside,
-                              ),
-                            ),
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(12.0),
-                              borderSide: const BorderSide(
-                                color: primaryColor,
-                                width: 1.6,
-                              ),
-                            ),
+                            enabledBorder: enabledBorder,
+                            focusedBorder: focousedBorder,
+                            border: border,
                           ),
                         ),
 
@@ -200,30 +182,12 @@ class _LoginState extends State<Login> {
                                 ),
                                 hintText: 'Password',
                                 contentPadding: EdgeInsets.symmetric(
-                                    horizontal: 16.0, vertical: height * 0.027),
-                                enabledBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(15),
-                                  borderSide: const BorderSide(
-                                    color: fieldsBorder,
-                                    width: 1.7,
-                                    strokeAlign: BorderSide.strokeAlignInside,
-                                  ),
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(12.0),
-                                  borderSide: const BorderSide(
-                                    color: Colors.black38,
-                                    width: 1.7,
-                                    strokeAlign: BorderSide.strokeAlignInside,
-                                  ),
-                                ),
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(12.0),
-                                  borderSide: const BorderSide(
-                                    color: primaryColor,
-                                    width: 1.6,
-                                  ),
-                                ),
+                                    horizontal: 16.0, vertical: height * 0.026),
+
+                                // Borders
+                                enabledBorder: enabledBorder,
+                                focusedBorder: focousedBorder,
+                                border: border,
                               ),
                             );
                           },
@@ -250,13 +214,13 @@ class _LoginState extends State<Login> {
                 ),
 
                 Padding(
-                  padding: EdgeInsets.symmetric(vertical: height * 0.04),
+                  padding: EdgeInsets.symmetric(vertical: height * 0.035),
                   child: const AutoSizeText(
                     'or continue with social account',
                     style: TextStyle(
-                      fontSize: 15,
+                      fontSize: 14,
                       color: Colors.black45,
-                      fontWeight: FontWeight.w600,
+                      fontWeight: FontWeight.w500,
                     ),
                   ),
                 ),

@@ -135,7 +135,7 @@ class _RegisterState extends State<Register> {
 
               // Registration Form
               Container(
-                margin: EdgeInsets.only(top: height * 0.035),
+                margin: EdgeInsets.only(top: height * 0.035, bottom: 10),
                 child: Form(
                   key: _registerFormKey,
                   child: Column(
@@ -160,7 +160,7 @@ class _RegisterState extends State<Register> {
                           decoration: InputDecoration(
                             hintText: 'Full Name',
                             contentPadding: EdgeInsets.symmetric(
-                                horizontal: 16.0, vertical: height * 0.027),
+                                horizontal: 16.0, vertical: height * 0.026),
 
                             // Borders
                             border: border,
@@ -190,7 +190,7 @@ class _RegisterState extends State<Register> {
                           decoration: InputDecoration(
                             hintText: 'Email',
                             contentPadding: EdgeInsets.symmetric(
-                                horizontal: 16.0, vertical: height * 0.027),
+                                horizontal: 16.0, vertical: height * 0.026),
 
                             // Borders
                             border: border,
@@ -220,10 +220,10 @@ class _RegisterState extends State<Register> {
                           decoration: InputDecoration(
                             hintText: 'Phone No',
                             contentPadding: EdgeInsets.symmetric(
-                                horizontal: 16.0, vertical: height * 0.027),
+                                horizontal: 16.0, vertical: height * 0.026),
 
                             prefixIcon: Padding(
-                              padding: const EdgeInsets.only(right: 5),
+                              padding: const EdgeInsets.only(right: 5, left: 5),
                               child: IconButton(
                                 onPressed: null,
                                 icon: SvgPicture.asset(
@@ -284,7 +284,7 @@ class _RegisterState extends State<Register> {
                                 ),
                                 hintText: 'Password',
                                 contentPadding: EdgeInsets.symmetric(
-                                    horizontal: 16.0, vertical: height * 0.027),
+                                    horizontal: 16.0, vertical: height * 0.026),
 
                                 // Borders
                                 border: border,
@@ -315,7 +315,7 @@ class _RegisterState extends State<Register> {
                             decoration: InputDecoration(
                               hintText: 'Confirm Password',
                               contentPadding: EdgeInsets.symmetric(
-                                  horizontal: 16.0, vertical: height * 0.027),
+                                  horizontal: 16.0, vertical: height * 0.026),
 
                               // Borders
                               border: border,
@@ -330,49 +330,22 @@ class _RegisterState extends State<Register> {
                 ),
               ), //End Registeration Form
 
-              //Register Button
-              Padding(
-                padding: EdgeInsets.symmetric(vertical: height * 0.02),
-                child: GestureDetector(
-                  onTap: null,
-                  child: Container(
-                    padding: const EdgeInsets.all(18),
-                    decoration: BoxDecoration(
-                      color: whiteBG,
-                      border: Border.all(
-                        color: primaryColor,
-                        width: 1.5,
-                      ),
-                      borderRadius: BorderRadius.circular(50),
-                      boxShadow: const [
-                        BoxShadow(
-                          color: Colors.black12,
-                          offset: Offset(0, 0),
-                          blurRadius: 25,
-                        )
-                      ],
-                    ),
-                    child: SvgPicture.asset(
-                      'assets/icons/arrow-auth_btn.svg',
-                      height: 30,
-                    ),
-                  ),
-                ),
-              ), //End Register Button
-
               //
-              const AutoSizeText(
-                'or continue with social account',
-                style: TextStyle(
-                  fontSize: 15,
-                  color: Colors.black45,
-                  fontWeight: FontWeight.w600,
+              const Padding(
+                padding: EdgeInsets.symmetric(vertical: 10),
+                child: AutoSizeText(
+                  'or continue with social account',
+                  style: TextStyle(
+                    fontSize: 14,
+                    color: Colors.black45,
+                    fontWeight: FontWeight.w500,
+                  ),
                 ),
               ),
 
               // Register with Social Accounts
               Padding(
-                padding: const EdgeInsets.symmetric(vertical: 15),
+                padding: const EdgeInsets.symmetric(vertical: 10),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -380,7 +353,7 @@ class _RegisterState extends State<Register> {
                     GestureDetector(
                       onTap: null,
                       child: Container(
-                        height: height * 0.08,
+                        height: height * 0.078,
                         width: width * 0.435,
                         decoration: BoxDecoration(
                           color: whiteBG,
@@ -406,13 +379,14 @@ class _RegisterState extends State<Register> {
                       ),
                     ), // End Continue with Apple btn
 
-                    const Padding(padding: EdgeInsets.symmetric(horizontal: 5)),
+                    const Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 5)), //
 
                     // Continue with Google btn
                     GestureDetector(
                       onTap: null,
                       child: Container(
-                        height: height * 0.08,
+                        height: height * 0.078,
                         width: width * 0.435,
                         decoration: BoxDecoration(
                           color: whiteBG,
@@ -432,7 +406,7 @@ class _RegisterState extends State<Register> {
                               'Login with Google',
                               style: TextStyle(
                                   fontSize: 13, fontWeight: FontWeight.w600),
-                            )
+                            ),
                           ],
                         ),
                       ),
@@ -440,6 +414,36 @@ class _RegisterState extends State<Register> {
                   ],
                 ),
               ),
+
+              //Register Button
+              Padding(
+                padding: EdgeInsets.symmetric(vertical: height * 0.01),
+                child: GestureDetector(
+                  onTap: null,
+                  child: Container(
+                    padding: const EdgeInsets.all(16),
+                    decoration: BoxDecoration(
+                      color: whiteBG,
+                      border: Border.all(
+                        color: primaryColor,
+                        width: 1.5,
+                      ),
+                      borderRadius: BorderRadius.circular(50),
+                      boxShadow: const [
+                        BoxShadow(
+                          color: Colors.black12,
+                          offset: Offset(0, 0),
+                          blurRadius: 25,
+                        )
+                      ],
+                    ),
+                    child: SvgPicture.asset(
+                      'assets/icons/arrow-auth_btn.svg',
+                      height: 30,
+                    ),
+                  ),
+                ),
+              ), //End Register Button
 
               // Login Redirect
               Padding(

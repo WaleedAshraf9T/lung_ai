@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:lung_ai/presentation/auth/forgot_password.dart';
 import 'package:lung_ai/presentation/auth/login.dart';
 import 'package:lung_ai/presentation/auth/register.dart';
 import 'package:lung_ai/presentation/home/home.dart';
@@ -34,7 +35,8 @@ class MyApp extends StatelessWidget {
           Home.route: (context) => const Home(),
           IntroPagesOne.route: (context) => const IntroPagesOne(),
           Login.route: (context) => const Login(),
-          Register.route: (context) => const Register()
+          Register.route: (context) => const Register(),
+          ForgotPassword.route: (context) => const ForgotPassword(),
         },
       ),
     );
