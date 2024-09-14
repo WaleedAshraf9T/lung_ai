@@ -79,181 +79,237 @@ class _RegisterState extends State<Register> {
     return Scaffold(
       backgroundColor: whiteBG,
       body: SafeArea(
-          child: SingleChildScrollView(
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: width * 0.05),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              //SVG Logo
-              Container(
-                margin: EdgeInsets.only(top: height * 0.04),
-                child: SvgPicture.asset(
-                  'assets/images/logo_black.svg',
-                  height: 32,
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: width * 0.05),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                //SVG Logo
+                Container(
+                  margin: EdgeInsets.only(top: height * 0.04),
+                  child: SvgPicture.asset(
+                    'assets/images/logo_black.svg',
+                    height: 32,
+                  ),
                 ),
-              ),
 
-              // Create Account text
-              Container(
-                margin: EdgeInsets.only(top: height * 0.025),
-                child: Column(
-                  children: [
-                    //Gradient Welcome Text
-                    ShaderMask(
-                      shaderCallback: (bounds) => const LinearGradient(
-                          colors: [secondaryColor, accentColor],
-                          tileMode: TileMode.mirror,
-                          begin: Alignment.topLeft,
-                          end: Alignment.bottomRight,
-                          stops: [0.3, 1.0]).createShader(bounds),
-                      child: const AutoSizeText(
-                        'Create Account',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontWeight: FontWeight.w700,
-                          fontSize: 32,
-                          color: whiteBG,
-                        ),
-                        maxLines: 2,
-                        maxFontSize: 48,
-                      ),
-                    ), //End Gradient Welcome Text
-
-                    // Tagline below heading
-                    const AutoSizeText(
-                      'Enter your account details, and start organizing your inventory',
-                      style:
-                          TextStyle(fontSize: 15, fontWeight: FontWeight.w500),
-                      textAlign: TextAlign.center,
-                      maxLines: 2,
-                      maxFontSize: 22,
-                    ), //End Tagline
-                  ],
-                ),
-              ), //End Create Account Text
-
-              // Registration Form
-              Container(
-                margin: EdgeInsets.only(top: height * 0.035, bottom: 10),
-                child: Form(
-                  key: _registerFormKey,
+                // Create Account text
+                Container(
+                  margin: EdgeInsets.only(top: height * 0.025),
                   child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
-                      // Full Name Field
-                      Padding(
-                        padding: const EdgeInsets.only(bottom: 9),
-                        child: TextFormField(
-                          autofocus: false,
-                          keyboardType: TextInputType.name,
-                          autovalidateMode: AutovalidateMode.onUserInteraction,
-
-                          //  Text Style
-                          style: const TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w500,
-                            color: black,
+                      //Gradient Welcome Text
+                      ShaderMask(
+                        shaderCallback: (bounds) => const LinearGradient(
+                            colors: [secondaryColor, accentColor],
+                            tileMode: TileMode.mirror,
+                            begin: Alignment.topLeft,
+                            end: Alignment.bottomRight,
+                            stops: [0.3, 1.0]).createShader(bounds),
+                        child: const AutoSizeText(
+                          'Create Account',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontWeight: FontWeight.w700,
+                            fontSize: 32,
+                            color: whiteBG,
                           ),
-
-                          // Input Decoration
-                          decoration: InputDecoration(
-                            hintText: 'Full Name',
-                            contentPadding: EdgeInsets.symmetric(
-                                horizontal: 16.0, vertical: height * 0.026),
-
-                            // Borders
-                            border: border,
-                            enabledBorder: enabledBorder,
-                            focusedBorder: focousedBorder,
-                          ),
+                          maxLines: 2,
+                          maxFontSize: 48,
                         ),
-                      ), // End Full Name Field
+                      ), //End Gradient Welcome Text
 
-                      // Emaill Field
-                      Padding(
-                        padding: const EdgeInsets.only(bottom: 9.0),
-                        child: TextFormField(
-                          autofocus: false,
-                          validator: validateEmail,
-                          keyboardType: TextInputType.emailAddress,
-                          autovalidateMode: AutovalidateMode.onUserInteraction,
+                      // Tagline below heading
+                      const AutoSizeText(
+                        'Enter your account details, and start organizing your inventory',
+                        style: TextStyle(
+                            fontSize: 15, fontWeight: FontWeight.w500),
+                        textAlign: TextAlign.center,
+                        maxLines: 2,
+                        maxFontSize: 22,
+                      ), //End Tagline
+                    ],
+                  ),
+                ), //End Create Account Text
 
-                          //  Text Style
-                          style: const TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w500,
-                            color: black,
-                          ),
+                // Registration Form
+                Container(
+                  margin: EdgeInsets.only(top: height * 0.035, bottom: 10),
+                  child: Form(
+                    key: _registerFormKey,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        // Full Name Field
+                        Padding(
+                          padding: const EdgeInsets.only(bottom: 9),
+                          child: TextFormField(
+                            autofocus: false,
+                            keyboardType: TextInputType.name,
+                            autovalidateMode:
+                                AutovalidateMode.onUserInteraction,
 
-                          // Input Decoration
-                          decoration: InputDecoration(
-                            hintText: 'Email',
-                            contentPadding: EdgeInsets.symmetric(
-                                horizontal: 16.0, vertical: height * 0.026),
-
-                            // Borders
-                            border: border,
-                            enabledBorder: enabledBorder,
-                            focusedBorder: focousedBorder,
-                          ),
-                        ),
-                      ), // End Email Field
-
-                      // Phone No Field
-                      Padding(
-                        padding: const EdgeInsets.only(bottom: 9.0),
-                        child: TextFormField(
-                          autofocus: false,
-                          keyboardType: TextInputType.phone,
-                          validator: validatePhoneNo,
-                          autovalidateMode: AutovalidateMode.onUserInteraction,
-
-                          //  Text Style
-                          style: const TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w500,
-                            color: black,
-                          ),
-
-                          // Input Decoration
-                          decoration: InputDecoration(
-                            hintText: 'Phone No',
-                            contentPadding: EdgeInsets.symmetric(
-                                horizontal: 16.0, vertical: height * 0.026),
-
-                            prefixIcon: Padding(
-                              padding: const EdgeInsets.only(right: 5, left: 5),
-                              child: IconButton(
-                                onPressed: null,
-                                icon: SvgPicture.asset(
-                                  'assets/icons/pak_flag.svg',
-                                  height: 22,
-                                ),
-                              ),
+                            //  Text Style
+                            style: const TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w500,
+                              color: black,
                             ),
 
-                            // Borders
-                            border: border,
-                            enabledBorder: enabledBorder,
-                            focusedBorder: focousedBorder,
-                          ),
-                        ),
-                      ), // End Phone No Field
+                            // Input Decoration
+                            decoration: InputDecoration(
+                              hintText: 'Full Name',
+                              contentPadding: EdgeInsets.symmetric(
+                                  horizontal: 16.0, vertical: height * 0.026),
 
-                      // Password Field
-                      Padding(
-                        padding: const EdgeInsets.only(bottom: 9.0),
-                        child: Consumer<Auth>(
+                              // Borders
+                              border: border,
+                              enabledBorder: enabledBorder,
+                              focusedBorder: focousedBorder,
+                            ),
+                          ),
+                        ), // End Full Name Field
+
+                        // Emaill Field
+                        Padding(
+                          padding: const EdgeInsets.only(bottom: 9.0),
+                          child: TextFormField(
+                            autofocus: false,
+                            validator: validateEmail,
+                            keyboardType: TextInputType.emailAddress,
+                            autovalidateMode:
+                                AutovalidateMode.onUserInteraction,
+
+                            //  Text Style
+                            style: const TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w500,
+                              color: black,
+                            ),
+
+                            // Input Decoration
+                            decoration: InputDecoration(
+                              hintText: 'Email',
+                              contentPadding: EdgeInsets.symmetric(
+                                  horizontal: 16.0, vertical: height * 0.026),
+
+                              // Borders
+                              border: border,
+                              enabledBorder: enabledBorder,
+                              focusedBorder: focousedBorder,
+                            ),
+                          ),
+                        ), // End Email Field
+
+                        // Phone No Field
+                        Padding(
+                          padding: const EdgeInsets.only(bottom: 9.0),
+                          child: TextFormField(
+                            autofocus: false,
+                            keyboardType: TextInputType.phone,
+                            validator: validatePhoneNo,
+                            autovalidateMode:
+                                AutovalidateMode.onUserInteraction,
+
+                            //  Text Style
+                            style: const TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w500,
+                              color: black,
+                            ),
+
+                            // Input Decoration
+                            decoration: InputDecoration(
+                              hintText: 'Phone No',
+                              contentPadding: EdgeInsets.symmetric(
+                                  horizontal: 16.0, vertical: height * 0.026),
+
+                              prefixIcon: Padding(
+                                padding:
+                                    const EdgeInsets.only(right: 5, left: 5),
+                                child: IconButton(
+                                  onPressed: null,
+                                  icon: SvgPicture.asset(
+                                    'assets/icons/pak_flag.svg',
+                                    height: 22,
+                                  ),
+                                ),
+                              ),
+
+                              // Borders
+                              border: border,
+                              enabledBorder: enabledBorder,
+                              focusedBorder: focousedBorder,
+                            ),
+                          ),
+                        ), // End Phone No Field
+
+                        // Password Field
+                        Padding(
+                          padding: const EdgeInsets.only(bottom: 9.0),
+                          child: Consumer<Auth>(
+                            builder: (context, passwordProvider, child) {
+                              return TextFormField(
+                                autofocus: false,
+                                validator: validatePassword,
+                                autovalidateMode:
+                                    AutovalidateMode.onUserInteraction,
+
+                                onChanged: (value) =>
+                                    registerationInfo['password'] = value,
+                                style: const TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w500,
+                                  color: black,
+                                ),
+
+                                // password Visibility
+                                obscureText:
+                                    passwordProvider.isRegisterPassHidden,
+                                decoration: InputDecoration(
+                                  // Password Field Eye Icon
+                                  suffixIcon: Padding(
+                                    padding: const EdgeInsets.only(right: 5),
+                                    child: IconButton(
+                                      onPressed: () {
+                                        passwordProvider
+                                            .toggleRegisterPasswordVisibility();
+                                      },
+                                      icon:
+                                          passwordProvider.isRegisterPassHidden
+                                              ? SvgPicture.asset(
+                                                  'assets/icons/unhide_pass_eye.svg',
+                                                  height: 18,
+                                                )
+                                              : SvgPicture.asset(
+                                                  'assets/icons/hide_pass_eye.svg',
+                                                ),
+                                    ),
+                                  ),
+                                  hintText: 'Password',
+                                  contentPadding: EdgeInsets.symmetric(
+                                      horizontal: 16.0,
+                                      vertical: height * 0.026),
+
+                                  // Borders
+                                  border: border,
+                                  enabledBorder: enabledBorder,
+                                  focusedBorder: focousedBorder,
+                                ),
+                              );
+                            },
+                          ),
+                        ), // Password Field End
+
+                        // Confirm Password Field
+                        Consumer<Auth>(
                           builder: (context, passwordProvider, child) {
                             return TextFormField(
                               autofocus: false,
-                              validator: validatePassword,
+                              validator: validateConfirmPassword,
                               autovalidateMode:
                                   AutovalidateMode.onUserInteraction,
-
-                              onChanged: (value) =>
-                                  registerationInfo['password'] = value,
                               style: const TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.w500,
@@ -264,25 +320,7 @@ class _RegisterState extends State<Register> {
                               obscureText:
                                   passwordProvider.isRegisterPassHidden,
                               decoration: InputDecoration(
-                                // Password Field Eye Icon
-                                suffixIcon: Padding(
-                                  padding: const EdgeInsets.only(right: 5),
-                                  child: IconButton(
-                                    onPressed: () {
-                                      passwordProvider
-                                          .toggleRegisterPasswordVisibility();
-                                    },
-                                    icon: passwordProvider.isRegisterPassHidden
-                                        ? SvgPicture.asset(
-                                            'assets/icons/unhide_pass_eye.svg',
-                                            height: 18,
-                                          )
-                                        : SvgPicture.asset(
-                                            'assets/icons/hide_pass_eye.svg',
-                                          ),
-                                  ),
-                                ),
-                                hintText: 'Password',
+                                hintText: 'Confirm Password',
                                 contentPadding: EdgeInsets.symmetric(
                                     horizontal: 16.0, vertical: height * 0.026),
 
@@ -293,188 +331,159 @@ class _RegisterState extends State<Register> {
                               ),
                             );
                           },
+                        ), // Confirm Password Field End
+                      ],
+                    ),
+                  ),
+                ), //End Registeration Form
+
+                //
+                const Padding(
+                  padding: EdgeInsets.symmetric(vertical: 10),
+                  child: AutoSizeText(
+                    'or continue with social account',
+                    style: TextStyle(
+                      fontSize: 14,
+                      color: Colors.black45,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                ),
+
+                // Register with Social Accounts
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 10),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      // Continue with Apple btn
+                      GestureDetector(
+                        onTap: () {},
+                        child: Container(
+                          height: height * 0.075,
+                          width: width * 0.435,
+                          decoration: BoxDecoration(
+                            color: whiteBG,
+                            border: Border.all(color: fieldsBorder, width: 1.5),
+                            borderRadius: BorderRadius.circular(15),
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              SvgPicture.asset(
+                                'assets/icons/apple_icon.svg',
+                                height: 18,
+                              ),
+                              const Padding(
+                                  padding: EdgeInsets.symmetric(horizontal: 5)),
+                              const AutoSizeText(
+                                'Apple',
+                                style: TextStyle(
+                                    fontSize: 14, fontWeight: FontWeight.w600),
+                              )
+                            ],
+                          ),
                         ),
-                      ), // Password Field End
+                      ), // End Continue with Apple btn
 
-                      // Confirm Password Field
-                      Consumer<Auth>(
-                        builder: (context, passwordProvider, child) {
-                          return TextFormField(
-                            autofocus: false,
-                            validator: validateConfirmPassword,
-                            autovalidateMode:
-                                AutovalidateMode.onUserInteraction,
-                            style: const TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w500,
-                              color: black,
-                            ),
+                      const Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 5)), //
 
-                            // password Visibility
-                            obscureText: passwordProvider.isRegisterPassHidden,
-                            decoration: InputDecoration(
-                              hintText: 'Confirm Password',
-                              contentPadding: EdgeInsets.symmetric(
-                                  horizontal: 16.0, vertical: height * 0.026),
-
-                              // Borders
-                              border: border,
-                              enabledBorder: enabledBorder,
-                              focusedBorder: focousedBorder,
-                            ),
-                          );
-                        },
-                      ), // Confirm Password Field End
+                      // Continue with Google btn
+                      GestureDetector(
+                        onTap: null,
+                        child: Container(
+                          height: height * 0.075,
+                          width: width * 0.435,
+                          decoration: BoxDecoration(
+                            color: whiteBG,
+                            border: Border.all(color: fieldsBorder, width: 1.5),
+                            borderRadius: BorderRadius.circular(15),
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              SvgPicture.asset(
+                                'assets/icons/google_icon.svg',
+                                height: 18,
+                              ),
+                              const Padding(
+                                  padding: EdgeInsets.symmetric(horizontal: 5)),
+                              const AutoSizeText(
+                                'Google',
+                                style: TextStyle(
+                                    fontSize: 14, fontWeight: FontWeight.w600),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ), //End Coninue with Google btn
                     ],
                   ),
                 ),
-              ), //End Registeration Form
 
-              //
-              const Padding(
-                padding: EdgeInsets.symmetric(vertical: 10),
-                child: AutoSizeText(
-                  'or continue with social account',
-                  style: TextStyle(
-                    fontSize: 14,
-                    color: Colors.black45,
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-              ),
-
-              // Register with Social Accounts
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 10),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    // Continue with Apple btn
-                    GestureDetector(
-                      onTap: null,
-                      child: Container(
-                        height: height * 0.078,
-                        width: width * 0.435,
-                        decoration: BoxDecoration(
-                          color: whiteBG,
-                          border: Border.all(color: fieldsBorder, width: 1.5),
-                          borderRadius: BorderRadius.circular(15),
+                //Register Button
+                Padding(
+                  padding: EdgeInsets.symmetric(vertical: height * 0.01),
+                  child: GestureDetector(
+                    onTap: () {},
+                    child: Container(
+                      padding: const EdgeInsets.all(16),
+                      decoration: BoxDecoration(
+                        color: whiteBG,
+                        border: Border.all(
+                          color: primaryColor,
+                          width: 1.5,
                         ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            SvgPicture.asset(
-                              'assets/icons/apple_icon.svg',
-                              height: 18,
-                            ),
-                            const Padding(
-                                padding: EdgeInsets.symmetric(horizontal: 5)),
-                            const AutoSizeText(
-                              'Login with Apple',
-                              style: TextStyle(
-                                  fontSize: 13, fontWeight: FontWeight.w600),
-                            )
-                          ],
-                        ),
+                        borderRadius: BorderRadius.circular(50),
+                        boxShadow: const [
+                          BoxShadow(
+                            color: Colors.black12,
+                            offset: Offset(0, 0),
+                            blurRadius: 25,
+                          )
+                        ],
                       ),
-                    ), // End Continue with Apple btn
-
-                    const Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 5)), //
-
-                    // Continue with Google btn
-                    GestureDetector(
-                      onTap: null,
-                      child: Container(
-                        height: height * 0.078,
-                        width: width * 0.435,
-                        decoration: BoxDecoration(
-                          color: whiteBG,
-                          border: Border.all(color: fieldsBorder, width: 1.5),
-                          borderRadius: BorderRadius.circular(15),
-                        ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            SvgPicture.asset(
-                              'assets/icons/google_icon.svg',
-                              height: 18,
-                            ),
-                            const Padding(
-                                padding: EdgeInsets.symmetric(horizontal: 5)),
-                            const AutoSizeText(
-                              'Login with Google',
-                              style: TextStyle(
-                                  fontSize: 13, fontWeight: FontWeight.w600),
-                            ),
-                          ],
-                        ),
+                      child: SvgPicture.asset(
+                        'assets/icons/arrow-auth_btn.svg',
+                        height: 30,
                       ),
-                    ), //End Coninue with Google btn
-                  ],
-                ),
-              ),
-
-              //Register Button
-              Padding(
-                padding: EdgeInsets.symmetric(vertical: height * 0.01),
-                child: GestureDetector(
-                  onTap: null,
-                  child: Container(
-                    padding: const EdgeInsets.all(16),
-                    decoration: BoxDecoration(
-                      color: whiteBG,
-                      border: Border.all(
-                        color: primaryColor,
-                        width: 1.5,
-                      ),
-                      borderRadius: BorderRadius.circular(50),
-                      boxShadow: const [
-                        BoxShadow(
-                          color: Colors.black12,
-                          offset: Offset(0, 0),
-                          blurRadius: 25,
-                        )
-                      ],
-                    ),
-                    child: SvgPicture.asset(
-                      'assets/icons/arrow-auth_btn.svg',
-                      height: 30,
                     ),
                   ),
-                ),
-              ), //End Register Button
+                ), //End Register Button
 
-              // Login Redirect
-              Padding(
-                padding: const EdgeInsets.only(bottom: 10),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const AutoSizeText(
-                      'Have an account? ',
-                      style:
-                          TextStyle(fontSize: 15, fontWeight: FontWeight.w500),
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.of(context).pushReplacementNamed(Login.route);
-                      },
-                      child: const AutoSizeText(
-                        'Login',
+                // Login Redirect
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 10),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const AutoSizeText(
+                        'Have an account? ',
                         style: TextStyle(
-                            fontSize: 15,
-                            fontWeight: FontWeight.w600,
-                            color: secondaryColor),
+                            fontSize: 15, fontWeight: FontWeight.w500),
                       ),
-                    )
-                  ],
-                ),
-              ) // End Login Redirect
-            ],
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.of(context)
+                              .pushReplacementNamed(Login.route);
+                        },
+                        child: const AutoSizeText(
+                          'Login',
+                          style: TextStyle(
+                              fontSize: 15,
+                              fontWeight: FontWeight.w600,
+                              color: secondaryColor),
+                        ),
+                      )
+                    ],
+                  ),
+                ) // End Login Redirect
+              ],
+            ),
           ),
         ),
-      )),
+      ),
     );
   }
 }

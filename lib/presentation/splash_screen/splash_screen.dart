@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lung_ai/presentation/auth/login.dart';
+import 'package:lung_ai/presentation/intro/intro_pages.dart';
 import 'package:lung_ai/shared/theme_colors.dart';
 import 'package:rive/rive.dart';
 
@@ -7,22 +7,23 @@ class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
 
   @override
-  _SplashScreenState createState() => _SplashScreenState();
+  SplashScreenState createState() => SplashScreenState();
 }
 
-class _SplashScreenState extends State<SplashScreen> {
+class SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    // You can add a delay to automatically transition to the next screen
     Future.delayed(const Duration(seconds: 3), () {
-      Navigator.pushReplacementNamed(context, Login.route);
+      Navigator.pushReplacementNamed(context, IntroPages.route);
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
+      extendBody: true,
+      extendBodyBehindAppBar: true,
       backgroundColor: primaryColor,
       body: Center(
         child: AspectRatio(
