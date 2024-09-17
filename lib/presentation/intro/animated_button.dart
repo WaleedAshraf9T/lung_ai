@@ -46,7 +46,7 @@ class _AnimatedButtonState extends State<AnimatedButton> {
                 height: widget.customHeight,
                 width: widget.customWidth,
                 child: const RiveAnimation.asset(
-                  'assets/animations/button_bg_animation',
+                  'assets/animations/button_bg_animation.riv',
                   fit: BoxFit.contain,
                 ),
               ),

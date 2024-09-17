@@ -15,14 +15,6 @@ void main() {
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
   ]).then((_) {
-    // Move the setSystemUIOverlayStyle inside the callback to ensure it's set after orientation is locked
-    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-      systemNavigationBarColor:
-          Colors.transparent, // Navigation bar color set to transparent
-      systemNavigationBarIconBrightness:
-          Brightness.light, // Navigation bar icons set to light
-    ));
-
     runApp(const MyApp());
   });
 }

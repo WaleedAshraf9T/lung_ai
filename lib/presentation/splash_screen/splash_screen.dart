@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lung_ai/presentation/intro/intro_pages.dart';
+import 'package:lung_ai/shared/custom_route_transistions.dart';
 import 'package:lung_ai/shared/theme_colors.dart';
 import 'package:rive/rive.dart';
 
@@ -15,7 +16,7 @@ class SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     Future.delayed(const Duration(seconds: 3), () {
-      Navigator.pushReplacementNamed(context, IntroPages.route);
+      Navigator.pushReplacement(context, FadeRoute(page: const IntroPages()));
     });
   }
 
