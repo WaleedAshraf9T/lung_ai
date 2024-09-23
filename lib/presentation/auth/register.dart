@@ -2,7 +2,10 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:lung_ai/presentation/auth/login.dart';
+import 'package:lung_ai/presentation/home/home.dart';
 import 'package:lung_ai/providers/auth.dart';
+import 'package:lung_ai/shared/custom_route_transistions.dart';
+import 'package:lung_ai/shared/expanding_circle.dart';
 import 'package:lung_ai/shared/field_decoration_properties.dart';
 import 'package:lung_ai/shared/theme_colors.dart';
 import 'package:provider/provider.dart';
@@ -426,7 +429,20 @@ class _RegisterState extends State<Register> {
                 Padding(
                   padding: EdgeInsets.symmetric(vertical: height * 0.01),
                   child: GestureDetector(
-                    onTap: () {},
+                    onTapDown: (details) => {
+                      Navigator.of(context).push(
+                        FadeRoute(
+                          page: ExpandingCircle(
+                            startPosition: details.globalPosition,
+                            duration: const Duration(
+                              milliseconds: 1000,
+                            ),
+                            color: primaryColor,
+                            nextPage: const Home(),
+                          ),
+                        ),
+                      ),
+                    },
                     child: Container(
                       padding: const EdgeInsets.all(16),
                       decoration: BoxDecoration(

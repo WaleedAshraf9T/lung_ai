@@ -222,6 +222,7 @@ class _IntroPagesState extends State<IntroPages> {
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceAround,
                                   children: [
+                                    //Register Button
                                     GestureDetector(
                                       onTapDown: (details) => {
                                         Navigator.of(context).pushReplacement(
@@ -230,7 +231,7 @@ class _IntroPagesState extends State<IntroPages> {
                                               startPosition:
                                                   details.globalPosition,
                                               duration: const Duration(
-                                                milliseconds: 1200,
+                                                milliseconds: 1000,
                                               ),
                                               nextPage: const Register(),
                                             ),
@@ -252,6 +253,8 @@ class _IntroPagesState extends State<IntroPages> {
                                         ),
                                       ),
                                     ),
+
+                                    //Login Button
                                     GestureDetector(
                                       onTapDown: (details) => {
                                         Navigator.of(context).pushReplacement(
@@ -260,7 +263,7 @@ class _IntroPagesState extends State<IntroPages> {
                                               startPosition:
                                                   details.globalPosition,
                                               duration: const Duration(
-                                                milliseconds: 1200,
+                                                milliseconds: 1000,
                                               ),
                                               nextPage: const Login(),
                                             ),
