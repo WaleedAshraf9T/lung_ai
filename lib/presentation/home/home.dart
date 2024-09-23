@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:lung_ai/shared/theme_colors.dart';
 
 class Home extends StatelessWidget {

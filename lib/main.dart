@@ -29,6 +29,7 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [ChangeNotifierProvider(create: (ctx) => Auth())],
       child: MaterialApp(
+        title: "Lung.ai",
         theme: ThemeData(fontFamily: "Poppins"),
         debugShowCheckedModeBanner: false,
         routes: {
