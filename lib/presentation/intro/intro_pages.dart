@@ -4,6 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:lung_ai/presentation/auth/login.dart';
 import 'package:lung_ai/presentation/auth/register.dart';
 import 'package:lung_ai/shared/custom_route_transistions.dart';
+import 'package:lung_ai/shared/expanding_circle.dart';
 import 'package:lung_ai/shared/theme_colors.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:lung_ai/shared/intro_pages_data.dart';
@@ -96,23 +97,26 @@ class _IntroPagesState extends State<IntroPages> {
                   ? Positioned(
                       top: 20,
                       right: 20,
-                      child: AnimatedButton(
-                        customHeight: height * 0.04,
-                        customWidth: width * 0.2,
-                        buttonWidget: const AutoSizeText(
-                          "Skip",
-                          style: TextStyle(
-                            color: whiteBG,
-                            fontSize: 11,
-                            fontWeight: FontWeight.w600,
-                            fontStyle: FontStyle.italic,
-                          ),
-                        ),
-                        buttonAction: () {
+                      child: GestureDetector(
+                        onTap: () {
                           setState(() {
-                            _currentIndex = introPagesText.length - 1;
+                            _pageController
+                                .jumpToPage(introPagesText.length - 1);
                           });
                         },
+                        child: AnimatedButton(
+                          customHeight: height * 0.04,
+                          customWidth: width * 0.2,
+                          buttonWidget: const AutoSizeText(
+                            "Skip",
+                            style: TextStyle(
+                              color: whiteBG,
+                              fontSize: 11,
+                              fontWeight: FontWeight.w600,
+                              fontStyle: FontStyle.italic,
+                            ),
+                          ),
+                        ),
                       ),
                     )
                   : const SizedBox(), // Skip Button End
@@ -218,29 +222,50 @@ class _IntroPagesState extends State<IntroPages> {
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceAround,
                                   children: [
-                                    AnimatedButton(
-                                      customHeight: 60,
-                                      customWidth: width * 0.45,
-                                      buttonWidget: const AutoSizeText(
-                                        "Register an Account",
-                                        textAlign: TextAlign.center,
-                                        style: TextStyle(
-                                          color: whiteBG,
-                                          fontSize: 11,
-                                          fontWeight: FontWeight.w600,
-                                          fontStyle: FontStyle.italic,
+                                    GestureDetector(
+                                      onTapDown: (details) => {
+                                        Navigator.of(context).pushReplacement(
+                                          FadeRoute(
+                                            page: ExpandingCircle(
+                                              startPosition:
+                                                  details.globalPosition,
+                                              duration: const Duration(
+                                                milliseconds: 1200,
+                                              ),
+                                              nextPage: const Register(),
+                                            ),
+                                          ),
+                                        ),
+                                      },
+                                      child: AnimatedButton(
+                                        customHeight: 60,
+                                        customWidth: width * 0.45,
+                                        buttonWidget: const AutoSizeText(
+                                          "Register an Account",
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                            color: whiteBG,
+                                            fontSize: 11,
+                                            fontWeight: FontWeight.w600,
+                                            fontStyle: FontStyle.italic,
+                                          ),
                                         ),
                                       ),
-                                      buttonAction: () {
-                                        Navigator.of(context)
-                                            .pushReplacementNamed(
-                                                Register.route);
-                                      },
                                     ),
                                     GestureDetector(
-                                      onTap: () {
-                                        Navigator.of(context)
-                                            .pushReplacementNamed(Login.route);
+                                      onTapDown: (details) => {
+                                        Navigator.of(context).pushReplacement(
+                                          FadeRoute(
+                                            page: ExpandingCircle(
+                                              startPosition:
+                                                  details.globalPosition,
+                                              duration: const Duration(
+                                                milliseconds: 1200,
+                                              ),
+                                              nextPage: const Login(),
+                                            ),
+                                          ),
+                                        ),
                                       },
                                       child: const AutoSizeText(
                                         "Login Your Account",
@@ -254,18 +279,20 @@ class _IntroPagesState extends State<IntroPages> {
                                     )
                                   ],
                                 )
-                              : AnimatedButton(
-                                  customHeight: 60,
-                                  customWidth: width * 0.4,
-                                  buttonWidget: SvgPicture.asset(
-                                      "assets/icons/arrow-right.svg"),
-                                  buttonAction: () {
+                              : GestureDetector(
+                                  onTap: () {
                                     _pageController.nextPage(
                                       duration:
                                           const Duration(milliseconds: 300),
                                       curve: Curves.easeInOut,
                                     );
                                   },
+                                  child: AnimatedButton(
+                                    customHeight: 60,
+                                    customWidth: width * 0.4,
+                                    buttonWidget: SvgPicture.asset(
+                                        "assets/icons/arrow-right.svg"),
+                                  ),
                                 ),
                         ],
                       ),
