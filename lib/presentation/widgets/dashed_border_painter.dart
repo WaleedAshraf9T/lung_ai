@@ -28,7 +28,6 @@ class DashedBorderPainter extends CustomPainter {
     final rrect = borderRadius.toRRect(rect);
 
     // Create a dashed path
-    final path = Path();
     final dashPath = createDashedPath(Path()..addRRect(rrect));
 
     canvas.drawPath(dashPath, paint);
