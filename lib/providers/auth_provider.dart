@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class Auth with ChangeNotifier {
+class AuthProvider with ChangeNotifier {
   bool _isLoginPassHidden = true;
   bool get isLoginPassHidden => _isLoginPassHidden;
 

@@ -6,7 +6,8 @@ import 'package:lung_ai/presentation/auth/register.dart';
 import 'package:lung_ai/presentation/home/home.dart';
 import 'package:lung_ai/presentation/intro/intro_pages.dart';
 import 'package:lung_ai/presentation/splash_screen/splash_screen.dart';
-import 'package:lung_ai/providers/auth.dart';
+import 'package:lung_ai/providers/auth_provider.dart';
+import 'package:lung_ai/providers/bottom_app_bar_provider.dart';
 import 'package:lung_ai/shared/expanding_circle.dart';
 import 'package:provider/provider.dart';
 
@@ -27,13 +28,21 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
-      providers: [ChangeNotifierProvider(create: (ctx) => Auth())],
+      providers: [
+        ChangeNotifierProvider(create: (_) => AuthProvider()),
+        ChangeNotifierProvider(create: (_) {
+          BottomBarProvider provider = BottomBarProvider();
+          provider.initializeArtboard(); // Ensure artboards are loaded
+          return provider;
+        }),
+      ],
       child: MaterialApp(
         title: "Lung.ai",
         theme: ThemeData(fontFamily: "Poppins"),
         debugShowCheckedModeBanner: false,
         routes: {
-          '/': (ctx) => const SplashScreen(),
+          // '/': (ctx) => const SplashScreen(),
+          '/': (ctx) => const Home(),
           Home.route: (ctx) => const Home(),
           IntroPages.route: (ctx) => const IntroPages(),
           Login.route: (ctx) => const Login(),

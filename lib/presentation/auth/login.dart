@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:lung_ai/presentation/auth/register.dart';
 import 'package:lung_ai/presentation/home/home.dart';
-import 'package:lung_ai/providers/auth.dart';
+import 'package:lung_ai/providers/auth_provider.dart';
 import 'package:lung_ai/shared/custom_route_transistions.dart';
 import 'package:lung_ai/shared/expanding_circle.dart';
 import 'package:lung_ai/shared/field_decoration_properties.dart';
@@ -149,7 +149,7 @@ class _LoginState extends State<Login> {
                             margin: const EdgeInsets.symmetric(vertical: 7)),
 
                         // Password Field
-                        Consumer<Auth>(
+                        Consumer<AuthProvider>(
                           builder: (context, passwordProvider, child) {
                             return TextFormField(
                               autofocus: false,

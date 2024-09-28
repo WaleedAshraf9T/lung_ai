@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:lung_ai/presentation/auth/login.dart';
 import 'package:lung_ai/presentation/home/home.dart';
-import 'package:lung_ai/providers/auth.dart';
+import 'package:lung_ai/providers/auth_provider.dart';
 import 'package:lung_ai/shared/custom_route_transistions.dart';
 import 'package:lung_ai/shared/expanding_circle.dart';
 import 'package:lung_ai/shared/field_decoration_properties.dart';
@@ -251,7 +251,7 @@ class _RegisterState extends State<Register> {
                         // Password Field
                         Padding(
                           padding: const EdgeInsets.only(bottom: 9.0),
-                          child: Consumer<Auth>(
+                          child: Consumer<AuthProvider>(
                             builder: (context, passwordProvider, child) {
                               return TextFormField(
                                 autofocus: false,
@@ -306,7 +306,7 @@ class _RegisterState extends State<Register> {
                         ), // Password Field End
 
                         // Confirm Password Field
-                        Consumer<Auth>(
+                        Consumer<AuthProvider>(
                           builder: (context, passwordProvider, child) {
                             return TextFormField(
                               autofocus: false,
