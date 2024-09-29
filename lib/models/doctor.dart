@@ -1,3 +1,5 @@
+import 'package:lung_ai/models/user_review.dart';
+
 class Doctor {
   final int id;
   final String name;
@@ -9,6 +11,7 @@ class Doctor {
   final double chargesPerHour;
   final double dicountOffer;
   final int likesCount;
+  final List<UserReview> usersReviews;
 
   Doctor({
     required this.id,
@@ -21,5 +24,6 @@ class Doctor {
     required this.chargesPerHour,
     this.dicountOffer = 0,
     this.likesCount = 0,
+    this.usersReviews = const [],
   });
 }

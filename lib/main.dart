@@ -8,7 +8,7 @@ import 'package:lung_ai/presentation/intro/intro_pages.dart';
 import 'package:lung_ai/presentation/splash_screen/splash_screen.dart';
 import 'package:lung_ai/providers/auth_provider.dart';
 import 'package:lung_ai/providers/bottom_app_bar_provider.dart';
-import 'package:lung_ai/shared/expanding_circle.dart';
+import 'package:lung_ai/presentation/widgets/expanding_circle.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -41,8 +41,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(fontFamily: "Poppins"),
         debugShowCheckedModeBanner: false,
         routes: {
-          // '/': (ctx) => const SplashScreen(),
-          '/': (ctx) => const Home(),
+          '/': (ctx) => const SplashScreen(),
           Home.route: (ctx) => const Home(),
           IntroPages.route: (ctx) => const IntroPages(),
           Login.route: (ctx) => const Login(),

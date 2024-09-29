@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lung_ai/shared/custom_route_transistions.dart';
+import 'package:lung_ai/presentation/widgets/fade_transition.dart';
 import 'package:lung_ai/shared/theme_colors.dart';
 
 class ExpandingCircle extends StatefulWidget {

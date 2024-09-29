@@ -50,7 +50,7 @@ final List<Doctor> doctorsData = [
     expertiesLevel: 3,
     avgRating: 4,
     chargesPerHour: 5000,
-    dicountOffer: 519,
-    likesCount: 201,
+    dicountOffer: 10,
+    likesCount: 519,
   ),
 ];
